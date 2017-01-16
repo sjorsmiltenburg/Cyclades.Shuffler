@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Cyclades.Shuffler.Views;
 using Xamarin.Forms;
 
 namespace Cyclades.Shuffler
@@ -11,23 +11,7 @@ namespace Cyclades.Shuffler
     {
         public App()
         {
-            // The root page of your application
-            var content = new ContentPage
-            {
-                Title = "Cyclades.Shuffler",
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
-                    }
-                }
-            };
-
-            MainPage = new NavigationPage(content);
+            MainPage = new NavigationPage(new StartPage());
         }
 
         protected override void OnStart()
