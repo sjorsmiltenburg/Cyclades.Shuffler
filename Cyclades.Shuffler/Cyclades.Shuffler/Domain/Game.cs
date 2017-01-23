@@ -1,34 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Cyclades.Shuffler.Domain
 {
-    public static class Helper
-    {
-        public static List<Card> Cards { get; } = new List<Card>(){
-                new Card("Zeus"),
-                new Card("Athena"),
-                new Card("Ares"),
-                new Card("Posseidon")
-            };
-    }
-
-    public class RandomHelper
-    {
-        public Random Random { get; private set; } = new Random(DateTime.Now.Millisecond);
-
-        private static RandomHelper _instance;
-        public static RandomHelper Instance
-        {
-            get
-            {
-                if (_instance == null) { _instance = new RandomHelper(); }
-                return _instance;
-            }
-        }
-    }
-
     public class Game
     {
         public List<Round> Rounds { get; set; } = new List<Round>();
@@ -37,6 +11,10 @@ namespace Cyclades.Shuffler.Domain
 
         public Round CurrentRound { get; set; }
 
+        public int NrOfPlayers { get; private set; }
+
+        private int NrOfCardsFaceUp;
+
         public void MoveToNextRound()
         {
             var previousRound = CurrentRound;
@@ -44,7 +22,7 @@ namespace Cyclades.Shuffler.Domain
             var newRound = Rounds.FirstOrDefault(x => x.RoundNr == CurrentRoundNr);
             if (newRound == null)
             {
-                newRound = new Round(CurrentRoundNr, previousRound);
+                newRound = new Round(CurrentRoundNr, previousRound, NrOfCardsFaceUp);
                 Rounds.Add(newRound);
             }
             CurrentRound = newRound;
@@ -58,47 +36,24 @@ namespace Cyclades.Shuffler.Domain
             }
             CurrentRound = Rounds.FirstOrDefault(x => x.RoundNr == CurrentRoundNr);
         }
-    }
 
-    public class Round
-    {
-        public int RoundNr { get; set; }
-        public List<Card> OpenCards { get; set; } = new List<Card>();
-        public Card ClosedCard { get; set; }
-
-
-        public Round(int roundNr, Round previousRound)
+        public Game(int nrOfPlayers)
         {
-            RoundNr = roundNr;
-            var cardsToChooseFrom = Helper.Cards.ToList();
-            var nrOfCardsToChoose = 2;
-            if (previousRound == null) //first round
-            { 
-                nrOfCardsToChoose = 3;
-            }
-            else
+            NrOfPlayers = nrOfPlayers;
+            switch (nrOfPlayers)
             {
-                OpenCards.Add(previousRound.ClosedCard);
-                cardsToChooseFrom.Remove(previousRound.ClosedCard);
+                case 2:
+                case 4:
+                    NrOfCardsFaceUp = 3;
+                    break;
+                case 3:
+                    NrOfCardsFaceUp = 2;
+                    break;
+                case 5:
+                    NrOfCardsFaceUp = 4;
+                    break;
             }
-
-            for (int i = 0; i < nrOfCardsToChoose; i++)
-            {
-                var card = cardsToChooseFrom[RandomHelper.Instance.Random.Next(cardsToChooseFrom.Count - 1)];
-                cardsToChooseFrom.Remove(card);
-                OpenCards.Add(card);
-            }
-            ClosedCard = cardsToChooseFrom[0];
-        }
-    }
-
-    public class Card
-    {
-        public string Name { get; set; }
-
-        public Card(string name)
-        {
-            Name = name;
+            MoveToNextRound();
         }
     }
 }

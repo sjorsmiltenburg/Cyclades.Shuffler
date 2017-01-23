@@ -4,14 +4,12 @@
              xmlns:viewModels="clr-namespace:Cyclades.Shuffler.ViewModels;assembly=Cyclades.Shuffler"
              x:Class="Cyclades.Shuffler.Views.GamePage">
 
-  <ContentPage.BindingContext>
-    <viewModels:GamePageViewModel></viewModels:GamePageViewModel>
-  </ContentPage.BindingContext>
 <StackLayout>
   <Label Text="{Binding RoundText}"></Label>
   <Label Text="{Binding Item1Text}"></Label>
   <Label Text="{Binding Item2Text}"></Label>
   <Label Text="{Binding Item3Text}"></Label>
+  <Label Text="{Binding Item4Text}"></Label>
   <Button Text="Next Round" Command="{Binding NextRoundCommand}"></Button>
   <Button Text="Previous Round" Command="{Binding PreviousRoundCommand}"></Button>
   <Button Text="End Game" Command="{Binding EndGameCommand}"></Button>
