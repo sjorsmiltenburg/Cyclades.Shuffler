@@ -14,6 +14,7 @@ namespace Cyclades.Shuffler.Views
         public GamePage(GamePageViewModel gamePageViewModel)
         {
             BindingContext = gamePageViewModel;
+            NavigationPage.SetHasBackButton(this, false);
             InitializeComponent();
         }
 
