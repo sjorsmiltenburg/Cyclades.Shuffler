@@ -40,8 +40,6 @@ namespace Cyclades.Shuffler.ViewModels
                 Item4Text = _game.CurrentRound.OpenCards[3].Name;
             }
             RoundText = $"Round {_game.CurrentRound.RoundNr}";
-            Messenger.Default.Send(new StartShrinkAnimationMessage());
-
         }
 
         public ICommand PreviousRoundCommand
