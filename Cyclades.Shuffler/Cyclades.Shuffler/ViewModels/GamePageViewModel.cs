@@ -2,16 +2,14 @@
 using System.Windows.Input;
 using Cyclades.Shuffler.Domain;
 using Cyclades.Shuffler.Helpers;
-using Cyclades.Shuffler.Views;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
-using Xamarin.Forms;
 
 namespace Cyclades.Shuffler.ViewModels
 {
-    public class GamePageViewModel : ViewModelBase, INavigatable
+    public class GamePageViewModel : ViewModelBase
     {
         private readonly IDialogService _dialogService;
 

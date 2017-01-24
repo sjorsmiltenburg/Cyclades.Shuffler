@@ -5,7 +5,7 @@
              x:Class="Cyclades.Shuffler.Views.GamePage">
 
 <StackLayout>
-  <Label Text="{Binding RoundText}"></Label>
+  <Label Text="{Binding RoundText}" FontSize="20"></Label>
   <Label Text="{Binding Item1Text}"></Label>
   <Label Text="{Binding Item2Text}"></Label>
   <Label Text="{Binding Item3Text}"></Label>

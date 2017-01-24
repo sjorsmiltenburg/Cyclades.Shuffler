@@ -41,7 +41,6 @@
     <Compile Include="Domain\Helper.cs" />
     <Compile Include="Domain\RandomHelper.cs" />
     <Compile Include="Domain\Round.cs" />
-    <Compile Include="Helpers\INavigatable.cs" />
     <Compile Include="Helpers\ViewModelLocator.cs" />
     <Compile Include="Helpers\DialogService.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
