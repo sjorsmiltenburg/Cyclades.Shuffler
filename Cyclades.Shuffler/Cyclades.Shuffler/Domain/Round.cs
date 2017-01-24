@@ -9,7 +9,6 @@ namespace Cyclades.Shuffler.Domain
         public List<Card> OpenCards { get; } = new List<Card>();
         public List<Card> ClosedCards { get; }
 
-
         public Round(int roundNr, Round previousRound, int nrOfOpenCards)
         {
             RoundNr = roundNr;

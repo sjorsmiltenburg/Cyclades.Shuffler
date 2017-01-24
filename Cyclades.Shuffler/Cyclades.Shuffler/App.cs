@@ -22,7 +22,7 @@ namespace Cyclades.Shuffler
             // First time initialization
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-      var navigationService = new NavigationService();
+            var navigationService = new NavigationService();
             navigationService.Configure(ViewModelLocator.StartPageKey, typeof(StartPage));
             navigationService.Configure(ViewModelLocator.GamePageKey, typeof(GamePage));
             SimpleIoc.Default.Register<INavigationService>(() => navigationService);
@@ -40,8 +40,6 @@ namespace Cyclades.Shuffler
 
             // The root page of your application
             MainPage = navPage;
-
-            
         }
 
         protected override void OnStart()

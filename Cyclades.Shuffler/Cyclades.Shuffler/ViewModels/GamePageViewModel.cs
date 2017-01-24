@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Threading.Tasks;
+using System.Windows.Input;
 using Cyclades.Shuffler.Domain;
 using Cyclades.Shuffler.Helpers;
 using Cyclades.Shuffler.Views;
@@ -10,8 +11,10 @@ using Xamarin.Forms;
 
 namespace Cyclades.Shuffler.ViewModels
 {
-    public class GamePageViewModel : ViewModelBase
+    public class GamePageViewModel : ViewModelBase, INavigatable
     {
+        private readonly IDialogService _dialogService;
+
         public ICommand NextRoundCommand
         {
             get
@@ -19,19 +22,25 @@ namespace Cyclades.Shuffler.ViewModels
                 return new RelayCommand(() =>
                 {
                     _game.MoveToNextRound();
-                    Item1Text = _game.CurrentRound.OpenCards[0].Name;
-                    Item2Text = _game.CurrentRound.OpenCards[1].Name;
-                    if (_game.CurrentRound.OpenCards.Count > 2)
-                    {
-                        Item3Text = _game.CurrentRound.OpenCards[2].Name;
-                    }
-                    if (_game.CurrentRound.OpenCards.Count > 3)
-                    {
-                        Item4Text = _game.CurrentRound.OpenCards[3].Name;
-                    }
-                    RoundText = $"Round {_game.CurrentRound.RoundNr}";
+                    UpdateOnScreenText();
+
                 });
-            } 
+            }
+        }
+
+        private void UpdateOnScreenText()
+        {
+            Item1Text = _game.CurrentRound.OpenCards[0].Name;
+            Item2Text = _game.CurrentRound.OpenCards[1].Name;
+            if (_game.CurrentRound.OpenCards.Count > 2)
+            {
+                Item3Text = _game.CurrentRound.OpenCards[2].Name;
+            }
+            if (_game.CurrentRound.OpenCards.Count > 3)
+            {
+                Item4Text = _game.CurrentRound.OpenCards[3].Name;
+            }
+            RoundText = $"Round {_game.CurrentRound.RoundNr}";
         }
 
         public ICommand PreviousRoundCommand
@@ -41,26 +50,43 @@ namespace Cyclades.Shuffler.ViewModels
                 return new RelayCommand(() =>
                 {
                     _game.MoveToPreviousRound();
-                    Item1Text = _game.CurrentRound.OpenCards[0].Name;
-                    Item2Text = _game.CurrentRound.OpenCards[1].Name;
-                    Item3Text = _game.CurrentRound.OpenCards[2].Name;
-                    Item4Text = _game.CurrentRound.OpenCards[3].Name;
-                    RoundText = $"Round {_game.CurrentRound.RoundNr}";
+                    UpdateOnScreenText();
                 });
             }
         }
 
-        public ICommand EndGameCommand {
+        public ICommand EndGameCommand
+        {
             get
             {
-                return new RelayCommand(() =>
+                return new RelayCommand(async () =>
                 {
-                    ServiceLocator.Current.GetInstance<INavigationService>().NavigateTo(ViewModelLocator.StartPageKey);
+                    var canClose = await CanClose();
+                    if (canClose)
+                    {
+                        ServiceLocator.Current.GetInstance<INavigationService>().NavigateTo(ViewModelLocator.StartPageKey);
+                    }
                 });
             }
         }
 
-            private Game _game;
+        private async Task<bool> CanClose()
+        {
+            var result = false;
+            await _dialogService.ShowMessage(
+                message: "Are you sure you want to leave the game?",
+                title: "Exit game?",
+                buttonConfirmText: "Yes",
+                buttonCancelText: "No",
+                afterHideCallback: (confirmed) =>
+                {
+                    result = confirmed;
+                });
+            return result;
+        }
+
+
+        private Game _game;
 
         private string _item1Text;
         public string Item1Text
@@ -69,7 +95,7 @@ namespace Cyclades.Shuffler.ViewModels
             set
             {
                 _item1Text = value;
-                RaisePropertyChanged(()=>Item1Text);
+                RaisePropertyChanged(() => Item1Text);
             }
         }
 
@@ -80,7 +106,7 @@ namespace Cyclades.Shuffler.ViewModels
             set
             {
                 _item2Text = value;
-                RaisePropertyChanged(()=>Item2Text);
+                RaisePropertyChanged(() => Item2Text);
             }
         }
 
@@ -88,7 +114,8 @@ namespace Cyclades.Shuffler.ViewModels
         public string Item3Text
         {
             get { return _item3Text; }
-            set {
+            set
+            {
                 _item3Text = value;
                 RaisePropertyChanged(() => Item3Text);
             }
@@ -115,14 +142,21 @@ namespace Cyclades.Shuffler.ViewModels
                 RaisePropertyChanged(() => RoundText);
             }
         }
-        
-        public GamePageViewModel()
+
+        public GamePageViewModel(IDialogService dialogService)
         {
+            _dialogService = dialogService;
         }
 
         public void Initialize(int nrOfPlayers)
         {
             _game = new Game(nrOfPlayers);
+            UpdateOnScreenText();
+        }
+
+        public async Task<bool> CanNavigateBack()
+        {
+            return await CanClose();
         }
     }
 }

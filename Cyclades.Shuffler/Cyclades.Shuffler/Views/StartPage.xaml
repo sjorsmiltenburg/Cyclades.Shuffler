@@ -4,7 +4,13 @@
              xmlns:viewModels="clr-namespace:Cyclades.Shuffler.ViewModels;assembly=Cyclades.Shuffler"
              x:Class="Cyclades.Shuffler.Views.StartPage">
   <StackLayout>
-    <Label Text="Start a game"></Label>
+    <TableView>
+      <TableRoot>
+        <TableSection >
+          <TextCell Text="Start a game" Detail="This app helps you play Cyclades the boardgame"></TextCell>
+        </TableSection>
+      </TableRoot>
+    </TableView>
     <Label Text="Choose the number of players"></Label>
     <Button Text="2" Command="{Binding Start2PlayerGameCommand}"></Button>
     <Button Text="3" Command="{Binding Start3PlayerGameCommand}"></Button>

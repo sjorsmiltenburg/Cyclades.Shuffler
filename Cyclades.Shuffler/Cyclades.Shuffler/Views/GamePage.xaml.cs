@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Cyclades.Shuffler.Helpers;
 using Cyclades.Shuffler.ViewModels;
 using Xamarin.Forms;
 
@@ -15,5 +16,12 @@ namespace Cyclades.Shuffler.Views
             BindingContext = gamePageViewModel;
             InitializeComponent();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            ((GamePageViewModel)this.BindingContext).EndGameCommand.Execute(null);
+            return true; //default cancel
+        }
+        
     }
 }

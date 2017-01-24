@@ -32,8 +32,16 @@ namespace Cyclades.Shuffler.Helpers
             }
         }
 
-        public void GoBack()
+        public async void GoBack()
         {
+            var currentPage = _navigation?.CurrentPage?.BindingContext as INavigatable;
+            if (currentPage != null)
+            {
+                if (! await currentPage.CanNavigateBack())
+                {
+                    return;
+                }
+            }
             _navigation.PopAsync();
         }
 
