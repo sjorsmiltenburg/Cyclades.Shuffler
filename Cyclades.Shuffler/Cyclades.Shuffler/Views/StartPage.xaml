@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:Cyclades.Shuffler.ViewModels;assembly=Cyclades.Shuffler"
              x:Class="Cyclades.Shuffler.Views.StartPage">
-  <StackLayout>
+  <StackLayout x:Name="MyStackedLayout">
     <TableView>
       <TableRoot>
         <TableSection >
@@ -16,7 +16,7 @@
     <Button Text="3" Command="{Binding Start3PlayerGameCommand}"></Button>
     <Button Text="4" Command="{Binding Start4PlayerGameCommand}"></Button>
     <Button Text="5" Command="{Binding Start5PlayerGameCommand}"></Button>
-    <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+    
   </StackLayout>
 
 </ContentPage>

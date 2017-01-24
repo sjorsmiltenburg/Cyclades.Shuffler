@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Cyclades.Shuffler.Helpers;
+﻿using Cyclades.Shuffler.Messages;
 using Cyclades.Shuffler.ViewModels;
+using GalaSoft.MvvmLight.Messaging;
 using Xamarin.Forms;
 
 namespace Cyclades.Shuffler.Views
@@ -15,8 +11,16 @@ namespace Cyclades.Shuffler.Views
         {
             BindingContext = gamePageViewModel;
             NavigationPage.SetHasBackButton(this, false);
-            NavigationPage.SetHasNavigationBar(this,false);
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
+
+            Messenger.Default.Register<StartEnlargeAnimationMessage>(this, PlayEnlargeAnimation);
+        }
+
+        private async void PlayEnlargeAnimation(StartEnlargeAnimationMessage message)
+        {
+            await RoundLabel.ScaleTo(2, 500, Easing.CubicIn);
+            await RoundLabel.ScaleTo(1, 500, Easing.CubicIn);
         }
 
         protected override bool OnBackButtonPressed()
@@ -24,6 +28,12 @@ namespace Cyclades.Shuffler.Views
             ((GamePageViewModel)this.BindingContext).EndGameCommand.Execute(null);
             return true; //default cancel
         }
-        
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await RoundLabel.ScaleTo(2, 500, Easing.CubicIn);
+            await RoundLabel.ScaleTo(1, 500, Easing.CubicIn);
+        }
     }
 }

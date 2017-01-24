@@ -9,6 +9,7 @@ namespace Cyclades.Shuffler.Views
         {
             NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = new StartPageViewModel();
+            
             InitializeComponent();
         }
     }

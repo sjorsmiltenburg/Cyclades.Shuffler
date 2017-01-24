@@ -1,9 +1,10 @@
 ﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using Cyclades.Shuffler.Domain;
-using Cyclades.Shuffler.Helpers;
+using Cyclades.Shuffler.Messages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
 
@@ -21,13 +22,13 @@ namespace Cyclades.Shuffler.ViewModels
                 {
                     _game.MoveToNextRound();
                     UpdateOnScreenText();
-
                 });
             }
         }
 
         private void UpdateOnScreenText()
         {
+            Messenger.Default.Send(new StartEnlargeAnimationMessage());
             Item1Text = _game.CurrentRound.OpenCards[0].Name;
             Item2Text = _game.CurrentRound.OpenCards[1].Name;
             if (_game.CurrentRound.OpenCards.Count > 2)
@@ -39,6 +40,8 @@ namespace Cyclades.Shuffler.ViewModels
                 Item4Text = _game.CurrentRound.OpenCards[3].Name;
             }
             RoundText = $"Round {_game.CurrentRound.RoundNr}";
+            Messenger.Default.Send(new StartShrinkAnimationMessage());
+
         }
 
         public ICommand PreviousRoundCommand

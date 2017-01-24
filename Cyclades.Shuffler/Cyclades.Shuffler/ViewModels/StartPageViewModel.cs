@@ -9,18 +9,6 @@ namespace Cyclades.Shuffler.ViewModels
 {
     public class StartPageViewModel : PropertyChangedBase
     {
-        private string _mainText;
-
-        public string MainText
-        {
-            get { return _mainText; }
-            set
-            {
-                _mainText = value;
-                OnPropertyChanged();
-            }
-        }
-
         public StartPageViewModel()
         {
             Start2PlayerGameCommand = new Command(() =>
@@ -39,6 +27,7 @@ namespace Cyclades.Shuffler.ViewModels
             {
                 StartGame(5);
             });
+            
         }
 
         private void StartGame(int nrOfPlayers)
@@ -54,5 +43,6 @@ namespace Cyclades.Shuffler.ViewModels
         public ICommand Start3PlayerGameCommand { get; set; }
         public ICommand Start4PlayerGameCommand { get; set; }
         public ICommand Start5PlayerGameCommand { get; set; }
+        public ICommand ScaleUpCommand { get; set; }
     }
 }
