@@ -62,7 +62,7 @@ namespace Cyclades.Shuffler.ViewModels
                     var canClose = await CanClose();
                     if (canClose)
                     {
-                        ServiceLocator.Current.GetInstance<INavigationService>().NavigateTo(ViewModelLocator.StartPageKey);
+                        ServiceLocator.Current.GetInstance<INavigationService>().GoBack();//.NavigateTo(ViewModelLocator.StartPageKey);
                     }
                 });
             }

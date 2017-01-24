@@ -11,7 +11,7 @@ namespace Cyclades.Shuffler.Helpers
     {
         private readonly Dictionary<string, Type> _pagesByKey = new Dictionary<string, Type>();
         private NavigationPage _navigation;
-
+        
         public string CurrentPageKey
         {
             get
