@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using Cyclades.Shuffler.Domain;
-using Cyclades.Shuffler.Helpers;
+﻿using Cyclades.Shuffler.Helpers;
 using Cyclades.Shuffler.ViewModels;
 using Cyclades.Shuffler.Views;
 using GalaSoft.MvvmLight.Ioc;

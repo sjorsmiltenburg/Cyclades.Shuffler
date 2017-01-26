@@ -13,12 +13,21 @@ namespace Cyclades.Shuffler.Views
         public TestPage()
         {
             InitializeComponent();
+            mybutton.Clicked += ((sender, args) => ClickHandler());
         }
 
-        protected override async void OnAppearing()
+        private void ClickHandler()
         {
-            base.OnAppearing();
-            await animateme.ScaleTo(2, 5000, Easing.Linear);
+            Animate();
+        }
+
+        async void Animate()
+        {
+            //await posseidon.ScaleTo(2, 5000, Easing.Linear);
+            posseidon.AnchorY = 0;
+            posseidon.AnchorX = 0;
+            posseidon.RotationY = -90;
+            await posseidon.RotateYTo(0, 1000, Easing.Linear);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Cyclades.Shuffler.Domain
         {
             RoundNr = roundNr;
 
-            var cardsToChooseFrom = Helper.Cards.ToList(); //copy
+            var cardsToChooseFrom = Game.Cards.ToList(); //copy
 
             var nrOfCardsToChoose = nrOfOpenCards;
             if (previousRound != null)

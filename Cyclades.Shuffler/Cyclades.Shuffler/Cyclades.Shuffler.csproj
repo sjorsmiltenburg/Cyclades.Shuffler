@@ -38,20 +38,24 @@
     <Compile Include="App.cs" />
     <Compile Include="Domain\Card.cs" />
     <Compile Include="Domain\Game.cs" />
-    <Compile Include="Domain\Helper.cs" />
     <Compile Include="Domain\RandomHelper.cs" />
     <Compile Include="Domain\Round.cs" />
     <Compile Include="Helpers\ViewModelLocator.cs" />
     <Compile Include="Helpers\DialogService.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
+    <Compile Include="Messages\MoveCardsUpAnimationFinishedMessage.cs" />
+    <Compile Include="Messages\RoundLabelAnimationFinishedMessage.cs" />
+    <Compile Include="Messages\StartMoveCardsUpAnimationMessage.cs" />
+    <Compile Include="Messages\StartRoundLabelAnimationMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CardViewModel.cs" />
     <Compile Include="ViewModels\GamePageViewModel.cs" />
     <Compile Include="ViewModels\PropertyChangedBase.cs" />
     <Compile Include="ViewModels\StartPageViewModel.cs" />
     <Compile Include="Views\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Messages\StartAnimationMessage.cs" />
+    <Compile Include="Messages\StartMoveCardsDownAnimationMessage.cs" />
     <Compile Include="Views\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
@@ -106,6 +110,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\ares.png" />
+    <Content Include="Resources\athena.png" />
+    <Content Include="Resources\zeus.png" />
+    <Content Include="Resources\posseidon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

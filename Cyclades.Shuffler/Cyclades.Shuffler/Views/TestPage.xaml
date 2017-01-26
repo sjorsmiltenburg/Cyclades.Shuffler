@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cyclades.Shuffler.Views.TestPage">
   <StackLayout>
-    <Label x:Name="animateme" BackgroundColor="Green" Text="123465" VerticalOptions="Center" HorizontalOptions="Center" />
+    
+    <Image x:Name="ares" Source="ares.png"></Image>
+    <Image x:Name="posseidon" Source="posseidon.png"></Image>
+    <Button x:Name="mybutton" Text="button"></Button>
   </StackLayout>
 </ContentPage>
