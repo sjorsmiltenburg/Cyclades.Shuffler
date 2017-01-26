@@ -10,8 +10,8 @@
     <Label Text="{Binding Item2Text}"></Label>
     <Label Text="{Binding Item3Text}"></Label>
     <Label Text="{Binding Item4Text}"></Label>
-    <Button Text="Next Round" Command="{Binding NextRoundCommand}"></Button>
-    <Button Text="Previous Round" Command="{Binding PreviousRoundCommand}"></Button>
-    <Button Text="End Game" Command="{Binding EndGameCommand}"></Button>
+    <Button x:Name="NextRoundButton"  Text="Next Round" Command="{Binding NextRoundCommand}"></Button>
+    <Button x:Name="PreviousRoundButton" Text="Previous Round" Command="{Binding PreviousRoundCommand}"></Button>
+    <Button x:Name="EndGameButton" Text="End Game" Command="{Binding EndGameCommand}"></Button>
   </StackLayout>
 </ContentPage>

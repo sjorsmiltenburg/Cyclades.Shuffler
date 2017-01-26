@@ -17,10 +17,19 @@ namespace Cyclades.Shuffler.Views
             Messenger.Default.Register<StartEnlargeAnimationMessage>(this, PlayEnlargeAnimation);
         }
 
+        
         private async void PlayEnlargeAnimation(StartEnlargeAnimationMessage message)
         {
+            NextRoundButton.IsEnabled = false;
+            PreviousRoundButton.IsEnabled= false;
+            EndGameButton.IsEnabled = false;
+
             await RoundLabel.ScaleTo(2, 500, Easing.CubicIn);
             await RoundLabel.ScaleTo(1, 500, Easing.CubicIn);
+
+            NextRoundButton.IsEnabled= true;
+            PreviousRoundButton.IsVisible = true;
+            EndGameButton.IsVisible = true;
         }
 
         protected override bool OnBackButtonPressed()
@@ -32,8 +41,7 @@ namespace Cyclades.Shuffler.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await RoundLabel.ScaleTo(2, 500, Easing.CubicIn);
-            await RoundLabel.ScaleTo(1, 500, Easing.CubicIn);
+            PlayEnlargeAnimation(null);
         }
     }
 }

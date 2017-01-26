@@ -25,6 +25,7 @@ namespace Cyclades.Shuffler.ViewModels
                 });
             }
         }
+       
 
         private void UpdateOnScreenText()
         {
@@ -132,6 +133,8 @@ namespace Cyclades.Shuffler.ViewModels
         }
 
         private string _roundText;
+        
+
         public string RoundText
         {
             get { return _roundText; }
