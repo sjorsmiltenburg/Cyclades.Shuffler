@@ -17,11 +17,6 @@
     <Label Grid.Row="0" HorizontalTextAlignment="Center" x:Name="RoundLabel" Text="{Binding RoundText}" FontSize="20"></Label>
 
     <StackLayout Grid.Row="1" x:Name="StackLayout">
-
-      <Label Text="{Binding Item1Text}"></Label>
-      <Label Text="{Binding Item2Text}"></Label>
-      <Label Text="{Binding Item3Text}"></Label>
-      <Label Text="{Binding Item4Text}"></Label>
     </StackLayout>
 
     <Button Grid.Row="2" x:Name="NextRoundButton"  Text="Next Round" Command="{Binding NextRoundCommand}"></Button>

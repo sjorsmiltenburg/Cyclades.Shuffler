@@ -33,8 +33,8 @@ namespace Cyclades.Shuffler.Views
         {
             await AnimateImagesRotateDown();
             NextRoundButton.IsEnabled = true;
-            PreviousRoundButton.IsVisible = true;
-            EndGameButton.IsVisible = true;
+            PreviousRoundButton.IsEnabled = true;
+            EndGameButton.IsEnabled = true;
         }
 
         private async void StartRoundLabelAnimation(StartRoundLabelAnimationMessage message)

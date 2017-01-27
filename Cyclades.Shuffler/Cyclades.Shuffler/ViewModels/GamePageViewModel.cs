@@ -33,17 +33,6 @@ namespace Cyclades.Shuffler.ViewModels
         private void AnimateMovingToNextRound()
         {
             Messenger.Default.Send(new StartMoveCardsUpAnimationMessage(_game.CurrentRound.OpenCards.Select(x=>new CardViewModel(x.Name)).ToList()));
-            
-            Item1Text = _game.CurrentRound.OpenCards[0].Name;
-            Item2Text = _game.CurrentRound.OpenCards[1].Name;
-            if (_game.CurrentRound.OpenCards.Count > 2)
-            {
-                Item3Text = _game.CurrentRound.OpenCards[2].Name;
-            }
-            if (_game.CurrentRound.OpenCards.Count > 3)
-            {
-                Item4Text = _game.CurrentRound.OpenCards[3].Name;
-            }
         }
 
         private void MoveCardsUpAnimationFinished(MoveCardsUpAnimationFinishedMessage obj)
@@ -102,53 +91,9 @@ namespace Cyclades.Shuffler.ViewModels
 
         private Game _game;
 
-        private string _item1Text;
-        public string Item1Text
-        {
-            get { return _item1Text; }
-            set
-            {
-                _item1Text = value;
-                RaisePropertyChanged(() => Item1Text);
-            }
-        }
-
-        private string _item2Text;
-        public string Item2Text
-        {
-            get { return _item2Text; }
-            set
-            {
-                _item2Text = value;
-                RaisePropertyChanged(() => Item2Text);
-            }
-        }
-
-        private string _item3Text;
-        public string Item3Text
-        {
-            get { return _item3Text; }
-            set
-            {
-                _item3Text = value;
-                RaisePropertyChanged(() => Item3Text);
-            }
-        }
-
-        private string _item4Text;
-        public string Item4Text
-        {
-            get { return _item4Text; }
-            set
-            {
-                _item4Text = value;
-                RaisePropertyChanged(() => Item4Text);
-            }
-        }
+        
 
         private string _roundText;
-
-
         public string RoundText
         {
             get { return _roundText; }
