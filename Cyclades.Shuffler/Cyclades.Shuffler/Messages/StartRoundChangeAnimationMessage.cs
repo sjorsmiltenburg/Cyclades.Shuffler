@@ -3,13 +3,16 @@ using Cyclades.Shuffler.ViewModels;
 
 namespace Cyclades.Shuffler.Messages
 {
-    public class StartMoveCardsUpAnimationMessage
+    public class StartRoundChangeAnimationMessage
     {
+        public int RoundNr { get; set; }
         public List<CardViewModel> OpenCardsInNewRound { get; private set; }
 
-        public StartMoveCardsUpAnimationMessage(List<CardViewModel> openCardsInNewRound)
+        public StartRoundChangeAnimationMessage(int roundNr, List<CardViewModel> openCardsInNewRound)
         {
+            RoundNr = roundNr;
             OpenCardsInNewRound = openCardsInNewRound;
         }
+
     }
 }

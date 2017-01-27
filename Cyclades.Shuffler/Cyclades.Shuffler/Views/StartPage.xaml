@@ -12,10 +12,10 @@
       </TableRoot>
     </TableView>
     <Label Text="Choose the number of players"></Label>
-    <Button Text="2" Command="{Binding Start2PlayerGameCommand}"></Button>
-    <Button Text="3" Command="{Binding Start3PlayerGameCommand}"></Button>
-    <Button Text="4" Command="{Binding Start4PlayerGameCommand}"></Button>
-    <Button Text="5" Command="{Binding Start5PlayerGameCommand}"></Button>
+    <Button Text="2" Command="{Binding StartGameCommand}" CommandParameter="2"></Button>
+    <Button Text="3" Command="{Binding StartGameCommand}" CommandParameter="3"></Button>
+    <Button Text="4" Command="{Binding StartGameCommand}" CommandParameter="4"></Button>
+    <Button Text="5" Command="{Binding StartGameCommand}" CommandParameter="5"></Button>
     
   </StackLayout>
 

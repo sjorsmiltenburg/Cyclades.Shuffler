@@ -32,18 +32,7 @@ namespace Cyclades.Shuffler.ViewModels
 
         private void AnimateMovingToNextRound()
         {
-            Messenger.Default.Send(new StartMoveCardsUpAnimationMessage(_game.CurrentRound.OpenCards.Select(x=>new CardViewModel(x.Name)).ToList()));
-        }
-
-        private void MoveCardsUpAnimationFinished(MoveCardsUpAnimationFinishedMessage obj)
-        {
-            RoundText = $"Round {_game.CurrentRound.RoundNr}";
-            Messenger.Default.Send(new StartRoundLabelAnimationMessage());
-        }
-
-        private void RoundLabelAnimationFinished(RoundLabelAnimationFinishedMessage obj)
-        {
-            Messenger.Default.Send(new StartMoveCardsDownAnimationMessage());
+            Messenger.Default.Send(new StartRoundChangeAnimationMessage(_game.CurrentRound.RoundNr, _game.CurrentRound.OpenCards.Select(x=>new CardViewModel(x.Name)).ToList()));
         }
 
         public ICommand PreviousRoundCommand
@@ -54,7 +43,7 @@ namespace Cyclades.Shuffler.ViewModels
                 {
                     _game.MoveToPreviousRound();
                     AnimateMovingToNextRound();
-                });
+                },()=> { return _game !=null && _game.CurrentRound.RoundNr > 1; });
             }
         }
 
@@ -93,22 +82,10 @@ namespace Cyclades.Shuffler.ViewModels
 
         
 
-        private string _roundText;
-        public string RoundText
-        {
-            get { return _roundText; }
-            set
-            {
-                _roundText = value;
-                RaisePropertyChanged(() => RoundText);
-            }
-        }
 
         public GamePageViewModel(IDialogService dialogService)
         {
             _dialogService = dialogService;
-            Messenger.Default.Register<RoundLabelAnimationFinishedMessage>(this,RoundLabelAnimationFinished);
-            Messenger.Default.Register<MoveCardsUpAnimationFinishedMessage>(this, MoveCardsUpAnimationFinished);
         }
 
         public void Initialize(int nrOfPlayers)

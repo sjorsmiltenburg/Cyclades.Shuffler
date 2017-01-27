@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Cyclades.Shuffler.Messages;
@@ -17,37 +18,36 @@ namespace Cyclades.Shuffler.Views
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
 
-            Messenger.Default.Register<StartRoundLabelAnimationMessage>(this, StartRoundLabelAnimation);
-            Messenger.Default.Register<StartMoveCardsDownAnimationMessage>(this, StartMoveCardsDownAnimation);
-            Messenger.Default.Register<StartMoveCardsUpAnimationMessage>(this, StartMoveCardsUpAnimation);
+            Messenger.Default.Register<StartRoundChangeAnimationMessage>(this, StartRoundChangeAnimation);
         }
 
-        private async void StartMoveCardsUpAnimation(StartMoveCardsUpAnimationMessage message)
-        {
-            await AnimateImagesRotateUp();
-            ResetImageOrder(message.OpenCardsInNewRound);
-            Messenger.Default.Send(new MoveCardsUpAnimationFinishedMessage());
-        }
+        
 
-        private async void StartMoveCardsDownAnimation(StartMoveCardsDownAnimationMessage obj)
+        private async void StartRoundChangeAnimation(StartRoundChangeAnimationMessage message)
         {
-            await AnimateImagesRotateDown();
-            NextRoundButton.IsEnabled = true;
-            PreviousRoundButton.IsEnabled = true;
-            EndGameButton.IsEnabled = true;
-        }
-
-        private async void StartRoundLabelAnimation(StartRoundLabelAnimationMessage message)
-        {
+            if (!_appeared)
+            {
+                _parkedMessage = message;
+                return;
+            }
             NextRoundButton.IsEnabled = false;
             PreviousRoundButton.IsEnabled = false;
             EndGameButton.IsEnabled = false;
 
+            //animate images up
+            await AnimateImagesRotateUp();
+            //refresh images
+            ResetImageOrder(message.OpenCardsInNewRound);
+            RoundLabel.Text = $"Round {message.RoundNr}";
+            //animate round
             await RoundLabel.ScaleTo(2, 500, Easing.CubicIn);
             await RoundLabel.ScaleTo(1, 500, Easing.CubicIn);
+            //animate images down
             await AnimateImagesRotateDown();
 
-            Messenger.Default.Send(new RoundLabelAnimationFinishedMessage());
+            NextRoundButton.IsEnabled = true;
+            PreviousRoundButton.IsEnabled = true;
+            EndGameButton.IsEnabled = true;
         }
 
         private async Task AnimateImagesRotateDown()
@@ -66,6 +66,10 @@ namespace Cyclades.Shuffler.Views
             {
                 StackLayout.Children.Remove(imageControl);
             }
+            if (StackLayout.Children.Count(x => x is Image) > 0)
+            {
+              Debugger.Break();  
+            };
             //insert new images
             foreach (var openCard in cardViewModels.Reverse<CardViewModel>())
             {
@@ -87,10 +91,24 @@ namespace Cyclades.Shuffler.Views
             return true; //default cancel
         }
 
+        private StartRoundChangeAnimationMessage _parkedMessage;
+
+        private bool _appeared = false;
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            StartRoundLabelAnimation(null);
+            _appeared = true;
+            if (_parkedMessage != null)
+            {
+                StartRoundChangeAnimation(_parkedMessage);
+                _parkedMessage = null;
+            }
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            _appeared = false;
         }
     }
 }

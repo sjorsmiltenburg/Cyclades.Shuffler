@@ -14,7 +14,7 @@
       <RowDefinition Height="Auto"></RowDefinition>
     </Grid.RowDefinitions>
 
-    <Label Grid.Row="0" HorizontalTextAlignment="Center" x:Name="RoundLabel" Text="{Binding RoundText}" FontSize="20"></Label>
+    <Label Grid.Row="0" HorizontalTextAlignment="Center" x:Name="RoundLabel" Text="notset" FontSize="20"></Label>
 
     <StackLayout Grid.Row="1" x:Name="StackLayout">
     </StackLayout>

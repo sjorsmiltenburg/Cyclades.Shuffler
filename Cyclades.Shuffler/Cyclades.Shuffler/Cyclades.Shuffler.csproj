@@ -43,10 +43,7 @@
     <Compile Include="Helpers\ViewModelLocator.cs" />
     <Compile Include="Helpers\DialogService.cs" />
     <Compile Include="Helpers\NavigationService.cs" />
-    <Compile Include="Messages\MoveCardsUpAnimationFinishedMessage.cs" />
-    <Compile Include="Messages\RoundLabelAnimationFinishedMessage.cs" />
-    <Compile Include="Messages\StartMoveCardsUpAnimationMessage.cs" />
-    <Compile Include="Messages\StartRoundLabelAnimationMessage.cs" />
+    <Compile Include="Messages\StartRoundChangeAnimationMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CardViewModel.cs" />
     <Compile Include="ViewModels\GamePageViewModel.cs" />
@@ -55,7 +52,6 @@
     <Compile Include="Views\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Messages\StartMoveCardsDownAnimationMessage.cs" />
     <Compile Include="Views\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
