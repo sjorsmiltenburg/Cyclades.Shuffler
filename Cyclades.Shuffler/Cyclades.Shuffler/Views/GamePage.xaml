@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Cyclades.Shuffler.ViewModels;assembly=Cyclades.Shuffler"
+             x:Class="Cyclades.Shuffler.Views.GamePage" BackgroundColor="Black">
+
+  <ScrollView>
+    <StackLayout Spacing="0">
+      
+      <Label TextColor="White" Grid.Row="0" HorizontalTextAlignment="Center" x:Name="RoundLabel" Text="notset" FontSize="20"></Label>
+      
+      <StackLayout Grid.Row="1" x:Name="StackLayout" Spacing="0" />
+      
+      <StackLayout Grid.Row="2"  Spacing="0">
+        <Button x:Name="NextRoundButton"  Text="Next Round" Command="{Binding NextRoundCommand}" ></Button>
+        <Button x:Name="PreviousRoundButton" Text="Previous Round" Command="{Binding PreviousRoundCommand}"  ></Button>
+        <Button x:Name="EndGameButton" Text="End Game" Command="{Binding EndGameCommand}" ></Button>
+      </StackLayout>
+    </StackLayout>
+  </ScrollView>
+</ContentPage>
