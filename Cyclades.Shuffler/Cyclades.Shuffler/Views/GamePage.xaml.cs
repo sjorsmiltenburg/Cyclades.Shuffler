@@ -21,8 +21,6 @@ namespace Cyclades.Shuffler.Views
             Messenger.Default.Register<StartRoundChangeAnimationMessage>(this, StartRoundChangeAnimation);
         }
 
-        
-
         private async void StartRoundChangeAnimation(StartRoundChangeAnimationMessage message)
         {
             if (!_appeared)

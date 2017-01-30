@@ -143,6 +143,18 @@
       <Name>Cyclades.Shuffler</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ares.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\athena.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\posseidon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zeus.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
