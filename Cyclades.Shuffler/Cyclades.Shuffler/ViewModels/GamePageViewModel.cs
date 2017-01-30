@@ -79,10 +79,7 @@ namespace Cyclades.Shuffler.ViewModels
 
 
         private Game _game;
-
         
-
-
         public GamePageViewModel(IDialogService dialogService)
         {
             _dialogService = dialogService;

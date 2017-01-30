@@ -2,21 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:Cyclades.Shuffler.ViewModels;assembly=Cyclades.Shuffler"
-             x:Class="Cyclades.Shuffler.Views.StartPage">
-  <StackLayout x:Name="MyStackedLayout">
-    <TableView>
-      <TableRoot>
-        <TableSection >
-          <TextCell Text="Start a game" Detail="This app helps you play Cyclades the boardgame"></TextCell>
-        </TableSection>
-      </TableRoot>
-    </TableView>
-    <Label Text="Choose the number of players"></Label>
-    <Button Text="2" Command="{Binding StartGameCommand}" CommandParameter="2"></Button>
-    <Button Text="3" Command="{Binding StartGameCommand}" CommandParameter="3"></Button>
-    <Button Text="4" Command="{Binding StartGameCommand}" CommandParameter="4"></Button>
-    <Button Text="5" Command="{Binding StartGameCommand}" CommandParameter="5"></Button>
-    
-  </StackLayout>
+             x:Class="Cyclades.Shuffler.Views.StartPage"  BackgroundColor="Black">
+  <Grid>
+    <StackLayout x:Name="MyStackedLayout" >
+      <Label TextColor="White" Text="Cyclades Shuffler"></Label>
+      <Image Source="cycladesboxart.jpg"></Image>
+      <Label TextColor="White" Text="Choose the number of players"></Label>
+      <Button Text="2" Command="{Binding StartGameCommand}" CommandParameter="2"></Button>
+      <Button Text="3" Command="{Binding StartGameCommand}" CommandParameter="3"></Button>
+      <Button Text="4" Command="{Binding StartGameCommand}" CommandParameter="4"></Button>
+      <Button Text="5" Command="{Binding StartGameCommand}" CommandParameter="5"></Button>
+
+
+    </StackLayout>
+  </Grid>
 
 </ContentPage>

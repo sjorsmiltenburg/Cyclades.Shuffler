@@ -121,14 +121,28 @@
     <None Include="Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ares.png" />
-    <Content Include="athena.png" />
+    <Content Include="..\Cyclades.Shuffler\Resources\ares.png">
+      <Link>ares.png</Link>
+    </Content>
+    <Content Include="..\Cyclades.Shuffler\Resources\athena.png">
+      <Link>athena.png</Link>
+    </Content>
+    <Content Include="..\Cyclades.Shuffler\Resources\background.jpg">
+      <Link>background.jpg</Link>
+    </Content>
+    <Content Include="..\Cyclades.Shuffler\Resources\cycladesboxart.jpg">
+      <Link>cycladesboxart.jpg</Link>
+    </Content>
+    <Content Include="..\Cyclades.Shuffler\Resources\posseidon.png">
+      <Link>posseidon.png</Link>
+    </Content>
+    <Content Include="..\Cyclades.Shuffler\Resources\zeus.png">
+      <Link>zeus.png</Link>
+    </Content>
     <Content Include="Assets\Logo.scale-100.png" />
-    <Content Include="posseidon.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
-    <Content Include="zeus.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

@@ -29,8 +29,11 @@ namespace Cyclades.Shuffler.Views
                 return;
             }
             NextRoundButton.IsEnabled = false;
+            NextRoundButton.IsVisible = false;
             PreviousRoundButton.IsEnabled = false;
+            PreviousRoundButton.IsVisible= false;
             EndGameButton.IsEnabled = false;
+            EndGameButton.IsVisible = false;
 
             //animate images up
             await AnimateImagesRotateUp();
@@ -44,8 +47,11 @@ namespace Cyclades.Shuffler.Views
             await AnimateImagesRotateDown();
 
             NextRoundButton.IsEnabled = true;
+            NextRoundButton.IsVisible = true;
             PreviousRoundButton.IsEnabled = true;
+            PreviousRoundButton.IsVisible= true;
             EndGameButton.IsEnabled = true;
+            EndGameButton.IsVisible = true;
         }
 
         private async Task AnimateImagesRotateDown()

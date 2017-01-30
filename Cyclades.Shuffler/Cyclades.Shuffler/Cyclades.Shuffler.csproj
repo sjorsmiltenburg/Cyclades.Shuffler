@@ -110,6 +110,8 @@
   <ItemGroup>
     <Content Include="Resources\ares.png" />
     <Content Include="Resources\athena.png" />
+    <Content Include="Resources\background.jpg" />
+    <Content Include="Resources\cycladesboxart.jpg" />
     <Content Include="Resources\zeus.png" />
     <Content Include="Resources\posseidon.png" />
   </ItemGroup>

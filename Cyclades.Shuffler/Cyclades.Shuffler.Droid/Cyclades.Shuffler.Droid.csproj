@@ -155,16 +155,34 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ares.png" />
+    <AndroidResource Include="..\Cyclades.Shuffler\Resources\ares.png">
+      <Link>Resources\drawable\ares.png</Link>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\athena.png" />
+    <AndroidResource Include="..\Cyclades.Shuffler\Resources\athena.png">
+      <Link>Resources\drawable\athena.png</Link>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\posseidon.png" />
+    <AndroidResource Include="..\Cyclades.Shuffler\Resources\background.jpg">
+      <Link>Resources\drawable\background.jpg</Link>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\zeus.png" />
+    <AndroidResource Include="..\Cyclades.Shuffler\Resources\cycladesboxart.jpg">
+      <Link>Resources\drawable\cycladesboxart.jpg</Link>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\Cyclades.Shuffler\Resources\posseidon.png">
+      <Link>Resources\drawable\posseidon.png</Link>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="..\Cyclades.Shuffler\Resources\zeus.png">
+      <Link>Resources\drawable\zeus.png</Link>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
