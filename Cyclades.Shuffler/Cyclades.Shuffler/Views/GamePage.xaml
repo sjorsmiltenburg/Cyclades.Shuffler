@@ -6,11 +6,20 @@
 
   <ScrollView>
     <StackLayout Spacing="0">
-      
-      <Label TextColor="White" Grid.Row="0" HorizontalTextAlignment="Center" x:Name="RoundLabel" Text="notset" FontSize="20"></Label>
-      
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition></ColumnDefinition>
+          <ColumnDefinition></ColumnDefinition>
+          <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" TextColor="White" Grid.Row="0" HorizontalTextAlignment="Start" Text="{Binding NrOfPlayers}" FontSize="20"></Label>
+        <Label Grid.Column="1" TextColor="White" Grid.Row="0" HorizontalTextAlignment="Center" x:Name="RoundLabel" Text="Round 0" FontSize="20"></Label>
+        <Label Grid.Column="2" TextColor="White" Grid.Row="0" HorizontalTextAlignment="End" Text="{Binding GameTimeValue}" FontSize="20"></Label>
+      </Grid>
+
       <StackLayout Grid.Row="1" x:Name="StackLayout" Spacing="0" />
-      
+
       <StackLayout Grid.Row="2"  Spacing="0">
         <Button x:Name="NextRoundButton"  Text="Next Round" Command="{Binding NextRoundCommand}" ></Button>
         <Button x:Name="PreviousRoundButton" Text="Previous Round" Command="{Binding PreviousRoundCommand}"  ></Button>

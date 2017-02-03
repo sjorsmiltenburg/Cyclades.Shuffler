@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -9,6 +10,7 @@ using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.Views;
 using Microsoft.Practices.ServiceLocation;
+using Xamarin.Forms;
 
 namespace Cyclades.Shuffler.ViewModels
 {
@@ -83,13 +85,42 @@ namespace Cyclades.Shuffler.ViewModels
         public GamePageViewModel(IDialogService dialogService)
         {
             _dialogService = dialogService;
+            Device.StartTimer(TimeSpan.FromSeconds(1), IncrementTimer);
+        }
+
+        private TimeSpan _gameTimer = new TimeSpan();
+
+        private bool IncrementTimer()
+        {
+            _gameTimer = _gameTimer.Add(TimeSpan.FromSeconds(1));
+            RaisePropertyChanged(propertyName: "GameTimeValue");
+            return true;
+        }
+
+        public string GameTimeValue
+        {
+            get
+            {
+                if (_gameTimer.Hours > 1)
+                {
+                    return _gameTimer.ToString("h':'mm':'ss");
+                }
+                else
+                {
+                    return _gameTimer.ToString("mm':'ss");
+                }
+            }
         }
 
         public void Initialize(int nrOfPlayers)
         {
             _game = new Game(nrOfPlayers);
             AnimateMovingToNextRound();
+            NrOfPlayers = $"{nrOfPlayers} Players";
+            RaisePropertyChanged("NrOfPlayers");
         }
+
+        public string NrOfPlayers { get; set; }
 
         public async Task<bool> CanNavigateBack()
         {

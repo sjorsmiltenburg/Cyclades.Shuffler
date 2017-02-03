@@ -11,10 +11,6 @@ namespace Cyclades.Shuffler.ViewModels
     {
         public StartPageViewModel()
         {
-            StartGameCommand = new Command((nrOfPlayers) =>
-            {
-                StartGame(int.Parse((string)nrOfPlayers));
-            });
         }
 
         private async void StartGame(int nrOfPlayers)
@@ -25,7 +21,15 @@ namespace Cyclades.Shuffler.ViewModels
             gamePageViewModel.Initialize(nrOfPlayers);
         }
 
-        public ICommand StartGameCommand { get; set; }
-        public ICommand ScaleUpCommand { get; set; }
+        public ICommand StartGameCommand
+        {
+            get
+            {
+                return new Command((nrOfPlayers) =>
+                {
+                    StartGame(int.Parse((string)nrOfPlayers));
+                });
+            } 
+        }
     }
 }

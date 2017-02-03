@@ -154,11 +154,6 @@
     </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="..\Cyclades.Shuffler\Resources\background.jpg">
-      <Link>Resources\background.jpg</Link>
-    </BundleResource>
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="..\Cyclades.Shuffler\Resources\cycladesboxart.jpg">
       <Link>Resources\cycladesboxart.jpg</Link>
     </BundleResource>

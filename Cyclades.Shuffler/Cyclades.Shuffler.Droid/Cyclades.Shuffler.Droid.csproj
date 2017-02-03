@@ -165,11 +165,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="..\Cyclades.Shuffler\Resources\background.jpg">
-      <Link>Resources\drawable\background.jpg</Link>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="..\Cyclades.Shuffler\Resources\cycladesboxart.jpg">
       <Link>Resources\drawable\cycladesboxart.jpg</Link>
     </AndroidResource>
